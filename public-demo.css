@@ -1,0 +1,52 @@
+.pd-guide{color:#252731;padding-bottom:10px}
+.pd-intro{padding:12px 2px 23px}
+.pd-eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:650;color:#ce1836}
+.pd-intro h1{font-size:30px;line-height:1.35;letter-spacing:-.6px;margin:12px 0 12px;font-weight:700}
+.pd-intro p{font-size:13px;line-height:1.85;color:#747781;margin:0}
+.pd-entry-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.pd-entry{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;padding:17px 13px 14px;border:1px solid #efd9df;border-radius:16px;background:#fff8fa;color:#252731;position:relative;min-height:151px}
+.pd-entry:nth-child(2){background:#fff;border-color:#e3e4eb}
+.pd-entry .pd-icon{background:#f9e5ec;color:#ce1836;margin-bottom:10px}
+.pd-entry:nth-child(2) .pd-icon{background:#f1f0f5;color:#787184}
+.pd-entry>.pd-label{width:100%}
+.pd-entry>.pd-label>strong{font-size:14px;line-height:1.4;display:block}
+.pd-entry>.pd-label>small{font-size:10px;line-height:1.65;display:block;margin-top:5px;color:#747781}
+.pd-entry>svg{position:absolute;top:23px;right:12px;width:15px;height:15px;color:#bb7484}
+.pd-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;flex:0 0 36px;border-radius:11px;background:#f3f1f5;color:#8c6773}
+.pd-icon svg{width:20px;height:20px;stroke-width:1.7}
+.pd-tabs{display:flex;background:#eae9ee;border-radius:11px;padding:4px;margin:0 0 21px;gap:4px}
+.pd-tabs button{flex:1;min-width:0;min-height:39px;border-radius:8px;color:#777883;font-size:13px;font-weight:600}
+.pd-tabs button.active{background:#fff;color:#ce1836;box-shadow:0 2px 6px #23233108}
+.pd-section-title{display:flex;flex-direction:column;gap:5px;margin:0 2px 12px}
+.pd-section-title h2{font-size:16px;font-weight:650;margin:0}
+.pd-section-title>span{font-size:11px;color:#8a8b95}
+.pd-flow-list{border:1px solid #e8e7ee;border-radius:15px;background:#fff;overflow:hidden}
+.pd-flow,.pd-role{display:flex;align-items:center;gap:11px;width:100%;min-width:0;min-height:86px;text-align:left;padding:14px 12px;border-bottom:1px solid #eeedf2;color:#252731}
+.pd-flow:last-child,.pd-role:last-child{border-bottom:0}
+.pd-flow:hover,.pd-role:hover{background:#fbf8fa}
+.pd-label{display:block;flex:1;min-width:0}
+.pd-flow strong,.pd-role strong{font-size:14px;line-height:1.5;display:block;font-weight:600}
+.pd-flow small,.pd-role small{font-size:11px;line-height:1.65;color:#81828c;display:block;margin-top:4px}
+.pd-flow>svg,.pd-role>svg{width:15px;height:15px;flex:0 0 15px;color:#aaa9b1}
+.pd-more{margin-top:15px}
+.pd-more>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:48px;cursor:pointer;padding:10px 3px;font-size:12px;font-weight:600;color:#686b76}
+.pd-more>summary::-webkit-details-marker{display:none}
+.pd-more>summary svg{width:18px;height:18px}
+.pd-more[open]>summary{margin-bottom:5px}
+.pd-share{margin-top:25px;border-top:1px solid #e1dfe7;padding-top:20px}
+.pd-share strong{font-size:13px;font-weight:600}
+.pd-share p{font-size:11px;line-height:1.7;color:#7c7e88;margin:7px 0 12px}
+.pd-share>.secondary{width:100%;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px}
+.pd-share>.secondary svg{width:16px;height:16px}
+.pd-note{font-size:10px;line-height:1.8;color:#8e8d97;margin:22px 2px 6px;text-align:center}
+.pd-share-sheet h2{font-size:22px;line-height:1.5;margin:11px 0}
+.pd-share-sheet>p{font-size:13px;line-height:1.8;color:#777b86}
+.pd-share-sheet .field{margin:19px 0 14px;font-size:12px}
+.pd-share-sheet input{font-size:12px!important;line-height:1.6}
+.pd-share-sheet>.full{margin-top:10px}
+.pd-share-sheet>h3{font-size:14px;margin:24px 0 10px}
+.pd-share-options{display:flex;flex-wrap:wrap;gap:8px}
+.pd-share-options button{border:1px solid #e5e2e9;border-radius:8px;min-height:40px;padding:9px 12px;font-size:12px;background:#fff}
+.pd-share-options button.active{border-color:#e9bdc8;background:#fff1f5;color:#c21a3a}
+.pd-guide button:focus-visible,.pd-share-sheet button:focus-visible,.pd-more summary:focus-visible{outline:2px solid #cb1238;outline-offset:3px}
+@media(max-width:350px){.pd-intro h1{font-size:27px}.pd-entry{padding:14px 10px}.pd-flow,.pd-role{padding:13px 10px;gap:9px}.pd-flow .pd-icon,.pd-role .pd-icon{width:32px;height:32px;flex-basis:32px}}

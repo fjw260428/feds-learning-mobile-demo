@@ -1,0 +1,296 @@
+/* TeamSync mobile shell. Load after the feature styles.
+ * Desktop demos retain a 390 × 844 portrait viewport; a real phone uses its
+ * own viewport. Neither dimension is inferred from the desktop window height.
+ */
+:root {
+  --bg: #f4f4f7;
+  --line: #e8e8ee;
+  --ink: #252731;
+  --muted: #747781;
+  --ts-sunken: #f0eff5;
+  --ts-accent: #ce1836;
+}
+body { background: #edf0f4; font-size: 14px; }
+.workspace { min-height: 100dvh; height: auto; overflow: visible; padding: 18px 24px 22px; gap: 16px; }
+.device,
+.device.app,
+.device.web,
+.device.web.admin-device {
+  width: 390px;
+  min-width: 390px;
+  max-width: 390px;
+  height: 844px;
+  min-height: 844px;
+  max-height: 844px;
+  flex: 0 0 auto;
+  border-radius: 34px;
+  border: 1px solid #dce0e7;
+  background: var(--bg);
+  box-shadow: 0 14px 48px #28354a18;
+}
+.device.web { border-radius: 24px; }
+.status-bar { height: 42px; min-height: 42px; padding: 13px 24px 7px; font-size: 12px; }
+.topbar,
+.module-topbar { min-height: 56px; height: 56px; padding: 5px 12px; gap: 8px; }
+.topbar .brand-logo { height: 32px; width: 32px; border-radius: 7px; }
+.topbar .brand-title,
+.topbar .brand strong { font-size: 16px; line-height: 1.35; letter-spacing: 0; }
+.topbar .brand-sub,
+.topbar .brand small { font-size: 8px; letter-spacing: 1px; margin-top: 2px; }
+.iconbtn { min-width: 44px; width: 44px; min-height: 44px; height: 44px; border-radius: 10px; }
+.module-title { min-width: 0; flex: 1; line-height: 1.3; }
+.module-title strong { display: block; font-size: 16px; font-weight: 650; }
+.module-title small { display: block; font-size: 10px; color: var(--muted); margin-top: 3px; }
+.module-topbar > button:first-child { flex-shrink: 0; }
+.content,
+.device.web.admin-device .content { padding: 16px; min-width: 0; scrollbar-width: thin; }
+.device.web.admin-device .adm-shortcuts,
+.device.web.admin-device .adm-form-grid { grid-template-columns: minmax(0,1fr); }
+.bottomnav { min-height: 62px; padding: 5px 10px 4px; gap: 0; box-shadow: 0 -1px 0 #e8e8ee; border-top: 0; }
+.bottomnav button { min-height: 52px; gap: 3px; padding: 4px 2px; border-radius: 8px; font-size: 11px; font-weight: 400; }
+.bottomnav svg { width: 22px; height: 22px; stroke-width: 1.7; }
+.bottomnav button.active { font-weight: 600; }
+.device.web .bottomnav { padding-left: 6px; padding-right: 6px; }
+.device.web .bottomnav button { font-size: 10px; }
+.home-indicator { height: 16px; min-height: 16px; }
+.home-indicator:after { top: 5px; width: 116px; }
+.device.web .home-indicator { display: none; }
+.prototype-caption { font-size: 11px; color: #7d8591; }
+.public-demo-bar { display:flex; align-items:center; gap:10px; flex:0 0 auto; min-height:32px; padding:0 13px; border-bottom:1px solid #eee5e7; background:#fff8f9; color:#8d4859; font-size:10px; }
+.public-demo-bar > span { flex:1; min-width:0; }
+.public-demo-bar > button { min-height:32px; min-width:44px; padding:4px 2px; font-size:11px; font-weight:600; color:#b5102d; white-space:nowrap; }
+
+/* TeamSync hub: company identity, favorites, then a three-column module grid. */
+.device.is-portal .content { padding: 0; background: #fff; }
+.ts-portal { min-width: 0; padding-bottom: 32px; }
+.ts-portal > p.small { margin: 16px 16px 0; }
+.ts-company { display: flex; flex-direction: column; align-items: center; padding: 22px 16px 25px; background: var(--ts-sunken); border-radius: 0 0 32px 32px; text-align: center; }
+.ts-company img { display: block; width: 80px; height: 80px; object-fit: contain; border-radius: 12px; margin-bottom: 12px; }
+.ts-company h1,
+.ts-company h2,
+.ts-company strong { display: block; font-size: 19px; font-weight: 650; line-height: 1.4; margin: 0; letter-spacing: .2px; }
+.ts-company p,
+.ts-company small { display: block; margin: 5px 0 0; font-size: 11px; line-height: 1.6; color: #787982; }
+.ts-portal-section { margin-top: 22px; padding: 0 16px; }
+.ts-portal-section > header,
+.ts-portal-section .ts-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 12px; }
+.ts-portal-section h2 { margin: 0; font-size: 15px; font-weight: 650; line-height: 1.5; letter-spacing: 0; }
+.ts-portal-section > header small,
+.ts-portal-section .ts-section-heading small { font-size: 11px; color: #8a8d96; }
+.ts-module-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; min-width: 0; }
+.ts-module { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; min-width: 0; min-height: 112px; padding: 14px 6px 12px; border: 1px solid #e8e8ee; border-radius: 13px; background: #fff; color: var(--ink); text-align: center; }
+.ts-module:hover { background: #faf9fc; border-color: #dcdce5; }
+.ts-module-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 11px; background: #f2f1f7; color: #717082; margin: 0 0 9px; }
+.ts-module-icon svg { width: 24px; height: 24px; stroke-width: 1.65; }
+.ts-module-label { display: block; font-size: 13px; font-weight: 600; line-height: 1.45; width: 100%; overflow-wrap: anywhere; }
+.ts-module-caption { display: block; margin-top: 4px; color: #83858e; font-size: 10px; line-height: 1.4; font-weight: 400; overflow-wrap: anywhere; }
+.count-alert, .ts-module-caption.count-alert, .list-item small .count-alert { color: var(--red); font-weight: 650; }
+.ts-favorites { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.ts-favorites .ts-module { align-items: flex-start; min-height: 124px; padding: 15px; text-align: left; background: #faf9fc; border-color: #ebe9f0; }
+.ts-favorites .ts-module:first-child { background: #fff6f7; border-color: #f4dfe4; }
+.ts-favorites .ts-module:first-child .ts-module-icon { color: var(--red); background: #ffeaee; }
+.ts-favorites .ts-module-label { font-size: 14px; }
+.ts-favorites .ts-module-caption { font-size: 11px; }
+.ts-portal-notice { display: flex; align-items: center; gap: 9px; min-height: 44px; width: calc(100% - 32px); margin: 16px 16px 0; padding: 10px 12px; background: #faf7f8; border-radius: 10px; text-align: left; font-size: 12px; line-height: 1.6; color: #6c6066; }
+.ts-portal-notice > svg { color: var(--red); width: 18px; height: 18px; }
+.ts-portal-notice > span { flex: 1; min-width: 0; }
+.ts-portal-notice > svg:last-child { color: #a89a9f; width: 15px; height: 15px; }
+.ts-portal-foot { color: #989aa3; text-align: center; font-size: 10px; margin: 20px 16px 0; }
+
+/* E Learning has its own navigation inside the parent TeamSync app. */
+.ts-module-nav { display: flex; align-items: stretch; gap: 0; margin: -16px -16px 17px; padding: 0 12px; background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: -16px; z-index: 4; }
+.ts-module-nav button { position: relative; flex: 1; min-width: 0; min-height: 44px; padding: 10px 3px; color: #7b7c86; font-size: 12px; line-height: 1.5; white-space: nowrap; }
+.ts-module-nav button.active,
+.ts-module-nav button[aria-current="page"] { color: var(--red); font-weight: 650; }
+.ts-module-nav button.active:after,
+.ts-module-nav button[aria-current="page"]:after { content: ''; height: 2px; background: var(--red); position: absolute; left: 18%; right: 18%; bottom: 0; border-radius: 2px; }
+.lr { --lr-bg: #f4f4f7; --lr-muted: #737785; --lr-ink: #262932; }
+.lr h1,
+.lr-home-heading h1 { font-size: 22px; font-weight: 650; line-height: 1.4; letter-spacing: -.3px; }
+.lr-intro,
+.lr-home-heading { margin-bottom: 15px; }
+.lr-eyebrow { letter-spacing: 1.2px; color: #8a8d97; font-size: 9px; margin-bottom: 5px; }
+.lr-home-heading > p,
+.lr-intro p { color: #7b7f8a; font-size: 12px; }
+.lr-motivation { font-size: 9px; padding: 4px 6px; }
+.lr-course-card { padding: 16px; border-radius: 14px; margin-bottom: 12px; box-shadow: none; border-color: #e9e9ef; }
+.lr-course-card h2,
+.lr-hero-card h2 { font-size: 18px; font-weight: 650; max-width: none; margin: 11px 0 8px; line-height: 1.5; letter-spacing: -.2px; }
+.lr-meta { font-size: 11px; color: #7b7f8a; margin: 8px 0 12px; }
+.lr-tag { font-size: 10px; }
+.lr-progress-label { margin: 13px 0 6px; font-size: 11px; color: #7d818b; }
+.lr-progress-label strong { font-size: 11px; color: #727682; }
+.lr-progress { height: 4px; margin-bottom: 12px; }
+.lr-course-card > .lr-button { margin-top: 12px; }
+.lr-button { min-height: 44px; padding: 10px 13px; border-radius: 9px; font-size: 13px !important; font-weight: 600 !important; }
+.lr-button.lr-primary { box-shadow: none; }
+.lr-text-button,
+.lr-back,
+.lr-filters button,
+.lr-material-tabs button,
+.lr-record-attempts button { min-height: 44px; }
+.lr-text-button { font-size: 11px !important; }
+.lr-back { font-size: 12px !important; margin: -6px 0 9px; }
+.lr-section-head { margin: 18px 0 9px; }
+.lr-section-head h2 { font-size: 15px; }
+.lr-panel { border-radius: 13px; padding: 15px; }
+.lr-course-row { min-height: 74px; padding: 13px 0; gap: 10px; }
+.lr-course-row > .lr-grow > strong,
+.lr-notice-strip > .lr-grow > strong,
+.lr-ai-strip > .lr-grow > strong,
+.lr-course-ai > .lr-grow > strong { font-size: 13px; font-weight: 600; }
+.lr-course-row > .lr-grow > span,
+.lr-notice-strip > .lr-grow > span,
+.lr-ai-strip > .lr-grow > span,
+.lr-course-ai > .lr-grow > span { font-size: 11px; color: #808590; }
+.lr-notice-strip,
+.lr-ai-strip,
+.lr-course-ai { border-radius: 12px; padding: 12px; margin-top: 12px; }
+.lr-search,
+.lr-filter-button { min-height: 44px; }
+.lr-search input { font-size: 13px !important; }
+.lr-filters { margin-bottom: 12px; }
+.lr-filters button { font-size: 12px; }
+.lr-course-art { height: 125px; border-radius: 14px; margin-bottom: 15px; }
+.lr-detail-heading h1,
+.lr-lesson-heading h1,
+.lr-question h1 { font-size: 20px; line-height: 1.55; font-weight: 650; }
+.lr-unit-row { min-height: 70px; padding: 13px 0; gap: 10px; }
+.lr-unit-row strong { font-size: 13px; font-weight: 600; }
+.lr-unit-row .lr-grow > span { font-size: 11px; color: #838791; }
+.lr-unit-state { font-size: 10px; }
+.lr-learning-step h3 { font-size: 14px; }
+.lr-learning-step p,
+.lr-transcript,
+.lr-keypoints ul { font-size: 13px; line-height: 1.85; color: #737a87; }
+.lr-lesson-banner { padding: 17px 15px; margin: 13px 0 15px; }
+.lr-answer { min-height: 60px; padding: 13px; border-radius: 11px; }
+.lr-answer > strong { font-size: 14px; }
+.lr-result-card,
+.lr-record-card { border-radius: 14px; }
+.lr-record-totals { padding: 16px 8px; border-radius: 13px; }
+.lr-record-totals span,
+.lr-record-card > p,
+.lr-record-org,
+.lr-record-attempts button { font-size: 11px; }
+.lr-record-attempts strong { font-size: 12px; }
+.lr-footnote,
+.lr-info-note { font-size: 11px; color: #818692; }
+.lr-file-card .lr-button,
+.lr-rating button,
+.lr-category-summary button { min-height: 44px; }
+.lr-home-foot,
+.lr-home-foot .lr-text-button { font-size: 10px !important; }
+
+/* Personal settings follow TeamSync's grouped account rows. */
+.ts-profile-head { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 12px 10px 20px; }
+.ts-profile-avatar { display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 50%; background: #e5f4f3; color: #35a5aa; font-size: 29px; font-weight: 500; margin: 0 auto 12px; }
+.ts-profile-avatar svg { width: 43px; height: 43px; stroke-width: 1.35; }
+.ts-profile-head h1,
+.ts-profile-head h2 { font-size: 20px; font-weight: 650; margin: 0 0 4px; }
+.ts-profile-head p,
+.ts-profile-head small { color: #838691; font-size: 12px; margin: 0; }
+.ts-settings { background: #fff; border: 1px solid #e8e8ee; border-radius: 13px; overflow: hidden; margin-bottom: 16px; padding: 0 14px; }
+.ts-setting-row { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 54px; padding: 12px 0; border-bottom: 1px solid #eeeeF3; text-align: left; font-size: 14px; color: #373b46; }
+.ts-setting-row:last-child { border-bottom: 0; }
+.ts-setting-row > svg { width: 20px; height: 20px; color: #8b8c99; flex-shrink: 0; }
+.ts-setting-row > svg:last-child { width: 15px; height: 15px; color: #afb0b9; }
+.ts-setting-row > span { min-width: 0; flex: 1; }
+.ts-setting-row strong { font-size: 14px; font-weight: 500; }
+.ts-setting-row small { color: #8b8e98; font-size: 12px; display: block; margin-top: 3px; }
+.ts-setting-row .ts-value { flex: 0 1 auto; max-width: 60%; color: #8b8e98; font-size: 13px; text-align: right; overflow-wrap: anywhere; }
+.ts-settings-title { margin: 18px 4px 8px; color: #82858e; font-size: 12px; font-weight: 500; }
+
+/* Compact common forms and management pages inside the same mobile viewport. */
+.page-title { margin-bottom: 16px; }
+.page-title h2 { font-size: 22px; }
+.card { padding: 16px; border-radius: 14px; box-shadow: none; margin-bottom: 13px; }
+.list-item { min-height: 56px; padding: 12px 0; }
+.stat { padding: 13px 10px; border-radius: 12px; }
+.stat strong { font-size: 23px; }
+.primary,
+.secondary,
+.danger-button,
+.ghost { min-height: 44px; border-radius: 10px; }
+.chip,
+.tabs button,
+.section-title button,
+.link-button,
+.backline { min-height: 44px; }
+.section-title { margin-top: 19px; }
+.notice-body { font-size: 14px; }
+.device.is-conversation > .topbar,
+.device.is-conversation > .bottomnav { display: none; }
+.device.is-conversation > .content { padding: 0; overflow: hidden; display: flex; min-height: 0; }
+.device.is-conversation > .content > .chat-conversation { flex: 1; width: 100%; min-height: 0; }
+
+@media (max-width: 600px) {
+  html, body { width: 100%; min-height: 100%; background: var(--bg); }
+  .workspace { display: block; min-height: 100dvh; height: 100dvh; padding: 0; overflow: hidden; }
+  .demo-toolbar,
+  .prototype-caption,
+  .device .status-bar,
+  .device .home-indicator { display: none; }
+  .device,
+  .device.app,
+  .device.web,
+  .device.web.admin-device {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: 100dvh;
+    min-height: 0;
+    max-height: none;
+    padding-top: env(safe-area-inset-top);
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .topbar,
+  .module-topbar { min-height: 56px; height: 56px; padding: 5px 12px; }
+  .content,
+  .device.web.admin-device .content { padding: 16px; }
+  .bottomnav,
+  .device.web .bottomnav { min-height: 62px; padding: 5px 8px max(5px,env(safe-area-inset-bottom)); }
+  .device.is-conversation { padding-bottom: env(safe-area-inset-bottom); }
+  .device.is-conversation > .content { padding: 0; }
+  .device.is-portal > .content { padding: 0; }
+  .modal { padding: 25px 18px max(24px,env(safe-area-inset-bottom)); }
+  .field input:not([type="checkbox"]):not([type="radio"]),
+  .field select,
+  .field textarea,
+  .lr-search input { font-size: 16px !important; }
+}
+@media (max-width: 359px) {
+  .topbar { padding-left: 8px; padding-right: 8px; gap: 5px; }
+  .topbar .brand-logo { width: 30px; height: 30px; }
+  .topbar .brand-sub { font-size: 7px; }
+  .content,
+  .device.web.admin-device .content { padding: 14px; }
+  .ts-module-nav { margin: -14px -14px 15px; top: -14px; padding: 0 7px; }
+  .ts-module-nav button { font-size: 11px; }
+  .ts-company { padding-top: 18px; padding-bottom: 21px; }
+  .ts-company img { width: 72px; height: 72px; }
+  .ts-portal-section { padding: 0 14px; }
+  .ts-portal > p.small { margin-left: 14px; margin-right: 14px; }
+  .ts-module-grid { gap: 8px; }
+  .ts-module { padding: 12px 4px 10px; min-height: 108px; }
+  .ts-module-label { font-size: 12px; }
+  .ts-module-caption { font-size: 9px; }
+  .ts-favorites { gap: 9px; }
+  .ts-favorites .ts-module { padding: 12px; }
+  .lr-home-heading h1 { font-size: 20px; }
+  .lr-motivation { font-size: 8px; }
+  .lr-course-card { padding: 14px; }
+  .lr-course-card h2 { font-size: 17px; }
+  .lr-unit-row strong { font-size: 12px; }
+  .lr-question h1 { font-size: 19px; }
+  .bottomnav button { font-size: 10px; }
+}
+
+.ts-portal-section > h2 { margin-bottom: 12px; }
+
+.page-title { display: block; margin: 0 0 16px; }
+.page-title > .eyebrow { display: none; }
+.page-title h1 { margin: 0; font-size: 22px; line-height: 1.4; letter-spacing: 0; }
