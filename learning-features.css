@@ -1,0 +1,14 @@
+.lr-media video { display:block; width:100%; aspect-ratio:16/9; background:#14213c; border-radius:12px; }
+.lesson-caption { min-height:3em; padding:10px; background:#14213c; color:white; text-align:center; }
+.lesson-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.lesson-controls label { display:flex; gap:6px; align-items:center; }
+.lesson-controls select { max-width:120px; padding:7px; }
+.lesson-topics { display:flex; flex-wrap:wrap; gap:8px; }
+.lesson-transcript button { display:block; width:100%; padding:12px; margin-top:8px; border:1px solid #d9dfe8; border-radius:10px; background:white; text-align:left; }
+.lesson-transcript small { display:block; color:#667085; }
+.lesson-transcript [aria-current="true"] { background:#e7f5fc; border-color:#3281b6; }
+.lesson-pages { min-height:260px; padding:20px; line-height:1.8; background:#f8f9fc; border-radius:12px; overflow-wrap:anywhere; }
+.lesson-pages img { width:100%; height:auto; }
+.lr-due-soon { color:#8b5900; }
+.lr-due-overdue { color:#ad1734; font-weight:700; }
+.lr-assignment p,.lr-assignment li { overflow-wrap:anywhere; white-space:pre-wrap; }
