@@ -1,4 +1,4 @@
-/* FEDS classic chat prototype. Local examples only; no model, upload, or API calls.
+/* Classic chat prototype. Local examples only; no model, upload, or API calls.
  * Integration: Demo.state.appAiEnabled; courseSettings[id].assistantEnabled;
  * userId; identity; gps.required; geo; catalog; chatCourse (one-shot course entry).
  * Demo.checkGeo() is the authoritative simulated location gate when available;
@@ -11,8 +11,8 @@
 (() => {
   'use strict';
   const assistants = [
-    { id: 'guide', name: '遠百財務 AI', role: '一般協作', icon: 'spark', description: '學習導覽、公告與日常工作問答', welcome: '你好，這裡是遠百財務 AI。可以詢問學習安排、公告確認，或已開放的課程內容。\n這裡使用預先編寫的本機示範內容，沒有連線 AI 模型。', prompts: ['幫我安排今天的學習', '如何完成公告確認？', '我可以問哪些內容？'] },
-    { id: 'invoice', course: 'invoice', name: '電子發票助手', role: '課程問答', icon: 'file', description: '整理電子發票與退換貨的示範學習重點。', welcome: '我是電子發票助手，可以帶你整理已開放課程的示範重點。\n回覆附有課程入口；正式作業請以遠百核定教材為準。', prompts: ['整理電子發票課程重點', '給我一題退換貨練習', '我想回到這堂課'] },
+    { id: 'guide', name: '財務 AI 助手', role: '一般協作', icon: 'spark', description: '學習導覽、公告與日常工作問答', welcome: '你好，這裡是財務 AI 助手。可以詢問學習安排、公告確認，或已開放的課程內容。\n這裡使用預先編寫的本機示範內容，沒有連線 AI 模型。', prompts: ['幫我安排今天的學習', '如何完成公告確認？', '我可以問哪些內容？'] },
+    { id: 'invoice', course: 'invoice', name: '電子發票助手', role: '課程問答', icon: 'file', description: '整理電子發票與退換貨的示範學習重點。', welcome: '我是電子發票助手，可以帶你整理已開放課程的示範重點。\n回覆附有課程入口；正式作業請以公司核定教材為準。', prompts: ['整理電子發票課程重點', '給我一題退換貨練習', '我想回到這堂課'] },
     { id: 'cash', course: 'cash', name: '收銀課程助手', role: '課程問答', icon: 'book', description: '依課程設定開放，財務專櫃課程預設關閉。', welcome: '我是收銀課程助手。此處只提供本機示範問答，正式作業請依核定教材。', prompts: ['整理收銀課程重點', '遇到結帳差異怎麼辦？', '我想回到這堂課'] }
   ];
   const courseNames = { cash: '收銀結帳與異常處理', invoice: '電子發票與退換貨作業' };
@@ -235,10 +235,10 @@
     const sources = courseId ? [{ id: courseId, version: courseVersion }] : [];
     if (courseId === 'invoice') {
       const exercise = /練習|一題|測驗|考我/.test(text);
-      const answer = exercise ? '來做一題示範練習：\n辦理退換貨時，應先核對哪一組資料？\nA. 原交易與相關發票紀錄\nB. 只看商品外觀\n\n示範答案：A。學習重點是依核准流程核對資料，再完成後續處理。實際作業細節由遠百核定教材為準。' : '電子發票課程的示範學習重點：\n1. 核對原始交易與相關發票紀錄。\n2. 依核准流程處理退換貨作業。\n3. 無法確認時，保留紀錄並向主管確認。\n\n這是原型預寫的示範摘要，不是實際財務作業指示；請回到正式教材確認適用流程。';
+      const answer = exercise ? '來做一題示範練習：\n辦理退換貨時，應先核對哪一組資料？\nA. 原交易與相關發票紀錄\nB. 只看商品外觀\n\n示範答案：A。學習重點是依核准流程核對資料，再完成後續處理。實際作業細節由公司核定教材為準。' : '電子發票課程的示範學習重點：\n1. 核對原始交易與相關發票紀錄。\n2. 依核准流程處理退換貨作業。\n3. 無法確認時，保留紀錄並向主管確認。\n\n這是原型預寫的示範摘要，不是實際財務作業指示；請回到正式教材確認適用流程。';
       return { text: fileNote + answer, courseId, courseVersion, sources };
     }
-    if (courseId === 'cash') return { text: fileNote + '收銀課程的示範學習重點：\n1. 核對交易明細、收款方式與金額。\n2. 保留差異紀錄，不以任意調整代替確認。\n3. 依核准流程回報主管。\n\n這是本機預寫內容。實際作業請依遠百核定教材。', courseId, courseVersion, sources };
+    if (courseId === 'cash') return { text: fileNote + '收銀課程的示範學習重點：\n1. 核對交易明細、收款方式與金額。\n2. 保留差異紀錄，不以任意調整代替確認。\n3. 依核准流程回報主管。\n\n這是本機預寫內容。實際作業請依公司核定教材。', courseId, courseVersion, sources };
     if (courseId) {
       // Read only the allowed course after the same permission check used for replies.
       const course = typeof window.LearningUI?.getCourse === 'function' ? window.LearningUI.getCourse(courseId) : catalogCourse(courseId);
